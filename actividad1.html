@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <form>
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres"><br><br>
+        
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos"><br><br>
+        
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" onchange="calcularEdad()"><br><br>
+        
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" readonly><br><br>
+        
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo">
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="otro">Otro</option>
+        </select><br><br>
+        
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo"><br><br>
+        
+        <label for="porcentaje">Porcentaje (%):</label>
+        <input type="range" id="porcentaje" name="porcentaje" min="0" max="100"><br><br>
+        
+        <label for="deportes">Deportes Favoritos:</label>
+        <input type="text" id="deportes" name="deportes"><br><br>
+        
+        <label for="cancion">Selecciona una canción:</label>
+        <select id="cancion" name="cancion">
+            <option value="cancion1">Canción 1</option>
+            <option value="cancion2">Canción 2</option>
+            <option value="cancion3">Canción 3</option>
+        </select><br><br>
+        
+        <label for="ciudad">Selecciona una ciudad:</label>
+        <select id="ciudad" name="ciudad">
+            <option value="ciudad1">Ciudad 1</option>
+            <option value="ciudad2">Ciudad 2</option>
+            <option value="ciudad3">Ciudad 3</option>
+        </select><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        function calcularEdad() {
+            var fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
+            var hoy = new Date();
+            var nacimiento = new Date(fecha_nacimiento);
+            var edad = hoy.getFullYear() - nacimiento.getFullYear();
+            var m = hoy.getMonth() - nacimiento.getMonth();
+            if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+                edad--;
+            }
+            document.getElementById('edad').value = edad;
+        }
+    </script>
+</body>
+</html>
